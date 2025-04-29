@@ -33,4 +33,25 @@ public class soporteService {
         sr.eliminar(id);
         return "Monitoreo Eliminado";
     }
+
+    //Validar accion de mostrar el estado actual del sistema
+    public boolean monitorearEstado(Monitoreo mon){
+        if (mon.isEstado() == true) {
+            return true;
+        }
+        return false;
+    }
+
+    //Solicitar una documentación del soporte por ID
+    public String solicitarSoporte(Monitoreo mon, int id){
+        if (mon.getId() == id) {
+            return "Vaucher: " + mon.getId() + 
+                   "Solicita Soporte al sistema por " + mon.getDescripcion() + 
+                   "Estado Actual: " + mon.isEstado();
+        }else{
+            return "ID no existente, intente nuevamente";
+        }
+    }
+
+    
 }
