@@ -35,8 +35,11 @@ public class soporteService {
     }
 
     //Validar accion de mostrar el estado actual del sistema
-    public boolean monitorearEstado(Monitoreo mon){
-        return mon.isEstado();
+    public boolean monitorearEstado(Monitoreo mon, int id){
+        if (mon.getId() == id) {
+            return mon.isEstado();
+        }
+        return false;
     }
 
     //Solicitar una documentación del soporte por ID

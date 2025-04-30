@@ -17,7 +17,7 @@ import cl.ecomarket.api.soporte.Soporte.Model.Monitoreo;
 import cl.ecomarket.api.soporte.Soporte.Service.copiaSoporteService;
 
 @RestController
-@RequestMapping("/api/v1/soporte/copia")
+@RequestMapping("/api/v1/copia")
 public class copiaSoporteController {
     @Autowired
     private copiaSoporteService css;
