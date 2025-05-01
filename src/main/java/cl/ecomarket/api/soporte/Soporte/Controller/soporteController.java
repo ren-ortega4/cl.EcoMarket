@@ -51,14 +51,16 @@ public class soporteController {
         return ss.mostrarEstado(id);
     }
 
-    @PostMapping("/{id}/estado")
-    public String cambiarEstado(@RequestBody Monitoreo mon, @PathVariable int id, @PathVariable String estado){
-        return ss.cambiarEstado(mon, id, estado);
+    @PostMapping("/estado/{estado}")
+    public String cambiarEstado(@RequestBody Monitoreo mon, @PathVariable String estado){
+        return ss.cambiarEstado(mon, estado);
     }
 
     @GetMapping("/{id}/solicitud")
     public String solicitarSoporte(@RequestBody Monitoreo mon, @PathVariable int id){
         return ss.solicitarSoporte(mon, id);
     }
+    
+    
 
 }

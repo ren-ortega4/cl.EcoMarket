@@ -46,13 +46,9 @@ public class soporteService {
     }
 
     //cambiar el estado del sistema por ID
-    public String cambiarEstado(Monitoreo mon, int id, String estado){
-        if (mon.getId() == id) {
-            mon.setEstado(estado.equalsIgnoreCase("activo"));
-            return "Estado cambiado a: " + estado;
-        }else{
-            return "ID no existente, intente nuevamente";
-        }
+    public String cambiarEstado(Monitoreo mon, String estado){
+        mon.setEstado(estado.equalsIgnoreCase("activo"));
+        return "Estado cambiado a: " + estado;
     }
 
     //Solicitar una documentación del soporte por ID
@@ -65,4 +61,5 @@ public class soporteService {
             return "ID no existente, intente nuevamente";
         }
     }    
+
 }
