@@ -38,7 +38,7 @@ public class soporteController {
 
     @PutMapping("{id}")
     public Monitoreo actualizarMonitoreo(@PathVariable int id, @RequestBody Monitoreo mon){
-        return ss.updateMonitoreo(mon);
+        return ss.updateMonitoreo(mon, id);
     }
 
     @DeleteMapping("{id}")
@@ -51,9 +51,9 @@ public class soporteController {
         return ss.mostrarEstado(id);
     }
 
-    @PostMapping("/{id}/estado/{estado}")
-    public String cambiarEstado(@PathVariable int id, @PathVariable String estado){
-        return ss.cambiarEstado(id, estado);
+    @PostMapping("/{id}/estado")
+    public String cambiarEstado(@RequestBody Monitoreo mon, @PathVariable int id, @PathVariable String estado){
+        return ss.cambiarEstado(mon, id, estado);
     }
 
     @GetMapping("/{id}/solicitud")

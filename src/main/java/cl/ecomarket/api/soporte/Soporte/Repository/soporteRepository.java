@@ -33,24 +33,14 @@ public class soporteRepository {
     }
 
     //Actualizar el monitoreo por el ID
-    public Monitoreo actualizar(Monitoreo mon){
-        int id = 0;
-        int idPosicion = 0;
-
-        for(int i = 0; i < listamonitoreos.size(); i++){
-            if (listamonitoreos.get(i).getId() == mon.getId()) {
-                id = mon.getId();
-                idPosicion = 1;
+    public Monitoreo actualizar(int id, Monitoreo mon){
+        for (int i = 0; i < listamonitoreos.size(); i++) {
+            if (listamonitoreos.get(i).getId() == id) {
+                listamonitoreos.set(i, mon);
+                return mon;
             }
         }
-
-        Monitoreo mon1 = new Monitoreo();
-        mon1.setId(id);
-        mon1.setEstado(mon.isEstado());
-        mon1.setDescripcion(mon.getDescripcion());
-
-        listamonitoreos.set(idPosicion, mon1);
-        return mon1;
+        return null;
     }
 
     //Eliminar buscando por el ID

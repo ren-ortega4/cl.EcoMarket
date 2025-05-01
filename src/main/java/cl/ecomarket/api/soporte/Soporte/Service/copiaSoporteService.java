@@ -36,8 +36,9 @@ public class copiaSoporteService {
         return "Copia Eliminada";
     }
 
-    //Realizar un respaldo a la copia
-    public CopiaMonitoreo respaldarCopia(Monitoreo mon){
+    //Realizar un respaldo a la copia por ID
+    public CopiaMonitoreo respaldarCopiaId(int id){
+        Monitoreo mon = ss.getMonitoreoId(id);
         CopiaMonitoreo cm = new CopiaMonitoreo();
         cm.setVaucher(ss.solicitarSoporte(mon,mon.getId()));
         return cm;

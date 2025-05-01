@@ -25,8 +25,8 @@ public class soporteService {
         return sr.buscarPorId(id);
     }
 
-    public Monitoreo updateMonitoreo(Monitoreo mon){
-        return sr.actualizar(mon);
+    public Monitoreo updateMonitoreo(Monitoreo mon, int id){
+        return sr.actualizar(id, mon);
     }
 
     public String deleteMonitoreo(int id){
@@ -45,14 +45,12 @@ public class soporteService {
         }
     }
 
-    //Cambiar el estado del sistema     
-    public String cambiarEstado(int id, String estado){
-        Monitoreo mon = sr.buscarPorId(id);
-        if (mon != null) {
+    //cambiar el estado del sistema por ID
+    public String cambiarEstado(Monitoreo mon, int id, String estado){
+        if (mon.getId() == id) {
             mon.setEstado(estado.equalsIgnoreCase("activo"));
-            sr.actualizar(mon);
             return "Estado cambiado a: " + estado;
-        } else {
+        }else{
             return "ID no existente, intente nuevamente";
         }
     }

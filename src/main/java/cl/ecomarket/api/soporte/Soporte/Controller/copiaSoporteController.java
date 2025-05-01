@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import cl.ecomarket.api.soporte.Soporte.Model.CopiaMonitoreo;
-import cl.ecomarket.api.soporte.Soporte.Model.Monitoreo;
 import cl.ecomarket.api.soporte.Soporte.Service.copiaSoporteService;
 
 @RestController
@@ -47,8 +46,8 @@ public class copiaSoporteController {
         return css.deleteCopia(id);
     }
 
-    @PostMapping("/respaldo")
-    public CopiaMonitoreo respaldarCopia(@RequestBody Monitoreo mon){
-        return css.respaldarCopia(mon);
+    @GetMapping("/{id}/respaldo")
+    public CopiaMonitoreo respaldarCopiaId(@PathVariable int id){
+        return css.respaldarCopiaId(id);
     }
 }
