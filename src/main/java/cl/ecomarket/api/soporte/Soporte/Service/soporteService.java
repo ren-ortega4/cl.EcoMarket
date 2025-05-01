@@ -35,11 +35,26 @@ public class soporteService {
     }
 
     //Validar accion de mostrar el estado actual del sistema
-    public boolean monitorearEstado(Monitoreo mon, int id){
-        if (mon.getId() == id) {
-            return mon.isEstado();
+    public String mostrarEstado(int id){
+        Monitoreo mon = sr.buscarPorId(id);
+        if (mon != null) {
+            return "ID: " + mon.getId() + 
+                   "Estado Actual: " + mon.isEstado();
+        } else {
+            return "ID no existente, intente nuevamente";
         }
-        return false;
+    }
+
+    //Cambiar el estado del sistema     
+    public String cambiarEstado(int id, String estado){
+        Monitoreo mon = sr.buscarPorId(id);
+        if (mon != null) {
+            mon.setEstado(estado.equalsIgnoreCase("activo"));
+            sr.actualizar(mon);
+            return "Estado cambiado a: " + estado;
+        } else {
+            return "ID no existente, intente nuevamente";
+        }
     }
 
     //Solicitar una documentación del soporte por ID
@@ -51,7 +66,5 @@ public class soporteService {
         }else{
             return "ID no existente, intente nuevamente";
         }
-    }
-
-    
+    }    
 }
