@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import cl.ecomarket.api.soporte.Soporte.Model.Monitoreo;
@@ -28,7 +29,7 @@ public class soporteController {
 
     @PostMapping
     public Monitoreo agregarMonitoreo(@RequestBody Monitoreo mon){
-        return ss.saveLibro(mon);
+        return ss.saveMonitoreo(mon);
     }
 
     @GetMapping("{id}")
@@ -51,14 +52,14 @@ public class soporteController {
         return ss.mostrarEstado(id);
     }
 
-    @PostMapping("/estado/{estado}")
-    public String cambiarEstado(@RequestBody Monitoreo mon, @PathVariable String estado){
-        return ss.cambiarEstado(mon, estado);
+    @PutMapping("/cambiarEstado/{id}")
+    public String cambiarEstadoId(@PathVariable int id, @RequestParam boolean nuevoEstado){
+        return ss.cambiarEstado(id, nuevoEstado);
     }
 
     @GetMapping("/{id}/solicitud")
-    public String solicitarSoporte(@RequestBody Monitoreo mon, @PathVariable int id){
-        return ss.solicitarSoporte(mon, id);
+    public String solicitarSoporte(@PathVariable int id){
+        return ss.solicitarSoporte(id);
     }
     
     

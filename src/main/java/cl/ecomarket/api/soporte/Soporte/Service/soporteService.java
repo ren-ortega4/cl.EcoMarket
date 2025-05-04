@@ -17,7 +17,7 @@ public class soporteService {
         return sr.obtenerMonitoreos();
     }
 
-    public Monitoreo saveLibro(Monitoreo monitoreo){
+    public Monitoreo saveMonitoreo(Monitoreo monitoreo){
         return sr.guardar(monitoreo);
     }
 
@@ -46,20 +46,28 @@ public class soporteService {
     }
 
     //cambiar el estado del sistema por ID
-    public String cambiarEstado(Monitoreo mon, String estado){
-        mon.setEstado(estado.equalsIgnoreCase("activo"));
-        return "Estado cambiado a: " + estado;
+    public String cambiarEstado(int id, boolean nuevoEstado){
+        Monitoreo mon = sr.buscarPorId(id);
+        if (mon != null) {
+            mon.setEstado(nuevoEstado);
+            return "Estado del soporte con ID " + id + " cambiado a: " + nuevoEstado;
+        } else {
+            return "ID no existente, intente nuevamente";
+        }
     }
 
     //Solicitar una documentación del soporte por ID
-    public String solicitarSoporte(Monitoreo mon, int id){
-        if (mon.getId() == id) {
-            return "Vaucher: " + mon.getId() + 
-                   "Solicita Soporte al sistema por " + mon.getDescripcion() + 
-                   "Estado Actual: " + mon.isEstado();
-        }else{
+    public String solicitarSoporte(int id){
+        Monitoreo mon = sr.buscarPorId(id);
+        if (mon != null) {
+            return "ID: " + mon.getId() + 
+                   "\nEstado Actual: "+ mon.isEstado() +
+                   "\nDescripcion: " + mon.getDescripcion() +
+                   "\nSolicitud de soporte enviada";
+        } else {
             return "ID no existente, intente nuevamente";
         }
-    }    
+    }
+        
 
 }

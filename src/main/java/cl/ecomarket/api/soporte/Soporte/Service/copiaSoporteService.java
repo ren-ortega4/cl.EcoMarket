@@ -36,11 +36,24 @@ public class copiaSoporteService {
         return "Copia Eliminada";
     }
 
-    //Realizar un respaldo a la copia por ID
+    /*Realizar un respaldo a la copia por ID
     public CopiaMonitoreo respaldarCopiaId(int id){
         Monitoreo mon = ss.getMonitoreoId(id);
         CopiaMonitoreo cm = new CopiaMonitoreo();
-        cm.setVaucher(ss.solicitarSoporte(mon,mon.getId()));
+        cm.setVaucher(ss.solicitarSoporte(id));
         return cm;
     }
+    */
+    //Realizar un respaldo a la copia por ID
+    public CopiaMonitoreo respaldarCopiaId(int id){
+        Monitoreo mon = ss.getMonitoreoId(id);
+        if (mon == null) {
+            return null; // o lanzar una excepción si lo prefieres
+        } else {
+            CopiaMonitoreo cm = new CopiaMonitoreo();
+            cm.setVaucher(ss.solicitarSoporte(id));
+            return csr.guardar(cm); // Guardar la copia en el repositorio
+        }
+    }
+    
 }
