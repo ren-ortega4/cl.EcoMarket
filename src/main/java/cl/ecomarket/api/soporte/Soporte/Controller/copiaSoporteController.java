@@ -46,7 +46,7 @@ public class copiaSoporteController {
         return css.deleteCopia(id);
     }
 
-    @GetMapping("/{id}/respaldo")
+    @PostMapping("/{id}/respaldo")
     public CopiaMonitoreo respaldarCopiaId(@PathVariable int id){
         return css.respaldarCopiaId(id);
     }
