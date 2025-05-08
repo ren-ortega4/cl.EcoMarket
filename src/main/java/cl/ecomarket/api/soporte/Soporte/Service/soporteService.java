@@ -39,7 +39,7 @@ public class soporteService {
         Monitoreo mon = sr.buscarPorId(id);
         if (mon != null) {
             return "ID: " + mon.getId() + 
-                   "Estado Actual: " + mon.isEstado();
+                   "Estado Actual: " + mon.getEstado();
         } else {
             return "ID no existente, intente nuevamente";
         }
@@ -61,7 +61,7 @@ public class soporteService {
         Monitoreo mon = sr.buscarPorId(id);
         if (mon != null) {
             return "ID: " + mon.getId() + 
-                   "\nEstado Actual: "+ mon.isEstado() +
+                   "\nEstado Actual: "+ mon.getEstado() +
                    "\nDescripcion: " + mon.getDescripcion() +
                    "\nSolicitud de soporte enviada";
         } else {

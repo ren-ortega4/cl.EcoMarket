@@ -1,15 +1,24 @@
 package cl.ecomarket.api.soporte.Soporte.Model;
 
-
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Entity
+@Table(name = "monitoreo")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Monitoreo {
-    private int id;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @Column(nullable = false, length = 200)
     private String descripcion;
-    private boolean estado;
+
+    @Column(nullable = false)
+    private Boolean estado;
 }
